@@ -9,7 +9,12 @@ export const getAllCustomers = async () => {
     return resp.data
 }
 
-export const createCustomer = async () => {
+export const createCustomer = async (customer) => {
     const resp = await api.post('/api/customer/')
+    return resp.data
+}
+
+export const deleteCustomer = async (id) => {
+    const resp = await api.delete(`/api/customer/${id}`)
     return resp.data
 }

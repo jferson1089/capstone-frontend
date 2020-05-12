@@ -54,4 +54,9 @@ section{
 
 aside{
   background-color: white;
+  border:2px solid black;
+  height:500px;
+  width:200px;
+  justify-content: column;
+  border-radius:25px;
 }
