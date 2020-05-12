@@ -10,7 +10,7 @@ export const getAllCustomers = async () => {
 }
 
 export const createCustomer = async (customer) => {
-    const resp = await api.post('/api/customer/')
+    const resp = await api.post('/api/customer/', customer)
     return resp.data
 }
 

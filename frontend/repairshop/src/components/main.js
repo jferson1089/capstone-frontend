@@ -1,13 +1,11 @@
 import React, { useState } from 'react'
 import Section from './section'
-import { Button, UncontrolledPopover, PopoverHeader, PopoverBody } from 'reactstrap';
-import Customer from './customer'
+
+import Footer from './footer'
 
 function Main() {
 
-    const [popoverOpen, setPopoverOpen] = useState(false);
 
-    const toggle = () => setPopoverOpen(!popoverOpen);
 
     return (
         <main>
@@ -21,7 +19,7 @@ function Main() {
 
 
 
-            <Button id="Popover1" type="button">
+            {/* <Button id="Popover1" type="button">
                 New Appointment
                 <i className="fas fa-play">
                     <UncontrolledPopover
@@ -36,8 +34,8 @@ function Main() {
                         </PopoverBody>
                     </UncontrolledPopover>
                 </i>
-            </Button>
-
+            </Button> */}
+            <Footer />
         </main>
     )
 }

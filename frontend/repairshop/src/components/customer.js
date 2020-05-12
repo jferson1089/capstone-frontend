@@ -1,13 +1,16 @@
 import React, { useState } from 'react'
 import { createCustomer } from '../services/api-helper'
-import { Button, Form, FormGroup, Label, Input, Col } from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input, Col, FormText } from 'reactstrap';
 
 function Customer() {
 
-    const [firstname, setFirstName] = useState("")
-    const [lastname, setLastName] = useState("")
-    const [phonenumber, setPhoneNumber] = useState("")
-    const [vin, setVin] = useState("")
+    const [firstname, setFirstName] = useState()
+    const [lastname, setLastName] = useState()
+    const [phonenumber, setPhoneNumber] = useState()
+    const [vin, setVin] = useState()
+    const [description, setDescription] = useState()
+
+
 
     const handleFirstName = e => {
         setFirstName(e.target.value)
@@ -27,25 +30,34 @@ function Customer() {
     const handleVin = e => {
         console.log('handle vin', e)
         setVin(e.target.value)
+
     }
 
+    const handleDescription = e => {
+        console.log('handle description', e)
+        setDescription(e.target.value)
+    }
 
-    // const handleChirp = e => {
-    //     setChirp(e.target.value)
-    //     console.log('handle chirp', e)
+    const newCustomer = {
+        first_name: firstname,
+        last_name: lastname,
+        phone_number: phonenumber,
+        vin_number: vin,
+        reason: description,
+    }
+
+    // const handleChange = (e) => {
+    //     const value = e.target.value
+    //     setNewCustomer({ [e.target.name]: value })
     // }
 
-    const handleCreate = (e) => {
-        e.preventDefault()
-        console.log('returned json from click', firstname + lastname)
-        e.target.reset()
-        const json = createCustomer([{
-            first_name: firstname,
-            last_name: lastname,
-            phone_number: phonenumber,
-            vin_number: vin
 
-        }])
+
+    const handleCreate = e => {
+        e.preventDefault()
+        console.log('returned json from click', newCustomer)
+        e.target.reset()
+        const json = createCustomer(newCustomer)
 
     }
 
@@ -89,6 +101,14 @@ function Customer() {
                             value={vin}
 
                         />
+                        <Input type="textarea"
+                            name="description"
+                            id="exampleDescription"
+                            placeholder="Enter your vehicle issues here..."
+                            onChange={handleDescription}
+                            value={description}
+                        />
+
                     </FormGroup>
                     <Button color="warning">Create New Appointment</Button>{' '}
                 </Form>

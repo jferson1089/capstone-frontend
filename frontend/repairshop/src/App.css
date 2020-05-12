@@ -39,13 +39,14 @@
 }
 
 main{
-  background-color:tan;
+  background-color:lightseagreen;
   height:815px;
 }
 
 section{
   height:650px;
   background-color: white;
+  border:4px solid lightgreen;
   border-radius:25px;
   margin:25px;
   overflow:auto;
@@ -54,9 +55,18 @@ section{
 
 aside{
   background-color: white;
-  border:2px solid black;
+  border:2px solid lightcoral;
   height:500px;
   width:200px;
   justify-content: column;
   border-radius:25px;
+}
+
+.footer{
+  display:flex;
+  justify-content: space-around;
+}
+
+.react-icons{
+  height:100px;
 }
