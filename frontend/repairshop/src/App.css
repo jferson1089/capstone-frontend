@@ -71,3 +71,10 @@ aside{
   display:flex;
   justify-content: space-around;
 }
+
+.newPage{
+  background-color: lightcoral;
+  height:500px;
+  width:500px;
+
+}

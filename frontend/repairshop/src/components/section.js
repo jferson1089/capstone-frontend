@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { getAllCustomers, deleteCustomer } from '../services/api-helper'
 import { Toast, ToastBody, ToastHeader } from 'reactstrap';
-import { FaTrash, FaCar, FaPen } from 'react-icons/fa'
+import { FaTrash, FaCar, FaPen, FaPrint } from 'react-icons/fa'
+import { Route, Link } from "react-router-dom";
+import Print from './print'
+
 
 function Section() {
 
@@ -30,8 +33,19 @@ function Section() {
 
     }
 
+    const handleNewPage = () => {
+        console.log('this was clicked for new page!')
+        return (
+            <>
+                <Link to="/print" target="_blank" component={Print}>
+                </Link>
+            </>
+        )
+    }
+
     const renderCustomers = customers.map((customer, index) => {
         return (
+
             <div key={index}>
                 <Toast>
                     <ToastBody>
@@ -45,13 +59,17 @@ function Section() {
                         <p>{customer.reason}</p>
                         <div className="split">
                             <FaPen />
-                            <p></p>
+
+                            <FaPrint onClick={handleNewPage} />
+
+
                             <FaTrash onClick={() => handleDelete(customer.id)} />
                         </div>
                     </ToastBody>
                 </Toast>
                 <hr />
-            </div>
+
+            </div >
 
 
         )
@@ -63,6 +81,7 @@ function Section() {
     return (
         <section>
             {renderCustomers}
+
         </section>
     )
 }

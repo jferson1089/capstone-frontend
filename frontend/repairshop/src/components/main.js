@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Section from './section'
-
 import Footer from './footer'
+
 
 function Main() {
 
@@ -36,7 +36,9 @@ function Main() {
                 </i>
             </Button> */}
             <Footer />
+
         </main>
+
     )
 }
 
