@@ -67,6 +67,7 @@ aside{
   justify-content: space-around;
 }
 
-.react-icons{
-  height:100px;
+.split{
+  display:flex;
+  justify-content: space-around;
 }

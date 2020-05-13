@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { getAllCustomers, deleteCustomer } from '../services/api-helper'
 import { Toast, ToastBody, ToastHeader } from 'reactstrap';
-import { FaTrash, FaCar } from 'react-icons/fa'
+import { FaTrash, FaCar, FaPen } from 'react-icons/fa'
 
 function Section() {
 
@@ -34,16 +34,20 @@ function Section() {
         return (
             <div key={index}>
                 <Toast>
-                    <FaCar />
-
                     <ToastBody>
+
+                        <FaCar size={32} />
                         <h6>{customer.first_name} {customer.last_name}</h6>
+
                         <h6>Scheduled for : {customer.date_requested}</h6>
                         <p>Phone :{customer.phone_number}</p>
                         <p>Vin: {customer.vin_number}</p>
                         <p>{customer.reason}</p>
-
-                        <FaTrash onClick={() => handleDelete(customer.id)} />
+                        <div className="split">
+                            <FaPen />
+                            <p></p>
+                            <FaTrash onClick={() => handleDelete(customer.id)} />
+                        </div>
                     </ToastBody>
                 </Toast>
                 <hr />

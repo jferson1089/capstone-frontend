@@ -18,3 +18,8 @@ export const deleteCustomer = async (id) => {
     const resp = await api.delete(`/api/customer/${id}`)
     return resp.data
 }
+
+export const updateCustomer = async (id, customer) => {
+    const resp = await api.put(`/api/customer/${id}`, customer)
+    return resp.data
+}
