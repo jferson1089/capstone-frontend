@@ -84,3 +84,28 @@ aside{
   margin:20px;
   
 }
+
+
+@media (min-width : 500px){
+main{
+  height: 1100px;
+}
+
+section{
+  height: 900px;
+}
+
+aside{
+  width:400px;
+  height:400px;
+}
+}
+
+@media (min-width: 1000px){
+  main{
+    height:900px;
+  }
+  section{
+    height:700px;
+  }
+}
