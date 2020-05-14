@@ -45,8 +45,13 @@ function Section() {
         const info = customer
         console.log("Handle pdf was clicked", info)
         var doc = new jsPDF()
-        doc.text(`${info.first_name}`, 20, 20)
-        doc.save('pdf')
+        doc.text('Auto Repair Shop', 10, 10)
+        doc.text('Repair Shop # 999-999-9999', 10, 15)
+        doc.text(`${info.first_name} ${info.last_name}`, 20, 20)
+        doc.text(`${info.phone_number}`, 25, 25)
+        doc.text(`${info.vin_number}`, 20, 30)
+        doc.text(`${info.reason}`, 10, 40)
+        doc.save('repairorder.pdf')
     }
     // const handleNewPage = () => {
     //     console.log('this was clicked for new page!')
