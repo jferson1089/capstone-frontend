@@ -2,8 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { getAllCustomers, deleteCustomer } from '../services/api-helper'
 import { Toast, ToastBody, ToastHeader } from 'reactstrap';
 import { FaTrash, FaCar, FaPen, FaPrint } from 'react-icons/fa'
-import { Route, Link } from "react-router-dom";
-import Print from './print'
 import jsPDF from 'jspdf';
 import { Button, UncontrolledPopover, PopoverHeader, PopoverBody } from 'reactstrap';
 import Update from './updateCustomer'
@@ -12,7 +10,6 @@ function Section() {
 
     const [customers, setCustomers] = useState([])
     const [useId, setId] = useState('')
-
 
 
     useEffect(() => {
@@ -48,20 +45,13 @@ function Section() {
         doc.text('Auto Repair Shop', 10, 10)
         doc.text('Repair Shop # 999-999-9999', 10, 15)
         doc.text(`${info.first_name} ${info.last_name}`, 20, 20)
-        doc.text(`${info.phone_number}`, 25, 25)
-        doc.text(`${info.vin_number}`, 20, 30)
-        doc.text(`${info.reason}`, 10, 40)
+        doc.text(`Phone Number :${info.phone_number}`, 80, 20)
+        doc.text(`Appointment : ${info.date_requested}`, 80, 30)
+        doc.text(`Vin Number : ${info.vin_number}`, 20, 40)
+        doc.text(`Description :${info.reason}`, 5, 60)
+        doc.text('Signature :____________________', 100, 250)
         doc.save('repairorder.pdf')
     }
-    // const handleNewPage = () => {
-    //     console.log('this was clicked for new page!')
-    //     return (
-    //         <>
-    //             <Link to="/print" target="_blank" component={Print}>
-    //             </Link>
-    //         </>
-    //     )
-    // }
 
     const renderCustomers = customers.map((customer, index) => {
         return (
@@ -79,7 +69,6 @@ function Section() {
                         <p>{customer.reason}</p>
 
                         <div className="split">
-
                             <Button id="Popover3" type="button">
                                 <FaPen size={20} onClick={() => handleId(customer.id)} />
                                 <i className="fas fa-play">
@@ -96,32 +85,18 @@ function Section() {
                                     </UncontrolledPopover>
                                 </i>
                             </Button>
-
                             <FaPrint size={20} onClick={() => handlePDF(customer)} />
-
-
-
-
-
                             <FaTrash size={20} onClick={() => handleDelete(customer.id)} />
                         </div>
                     </ToastBody>
                 </Toast>
                 <hr />
-
             </div >
-
-
         )
     })
-
-
-
-
     return (
         <section>
             {renderCustomers}
-
         </section>
     )
 }
