@@ -16,7 +16,7 @@ export const createCustomer = async (customer) => {
 }
 
 export const deleteCustomer = async (id) => {
-    const resp = await api.delete(`/api/customer/${id}`)
+    const resp = await api.delete(`/api/customer/${id}/`)
     return resp.data
 }
 

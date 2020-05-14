@@ -4,7 +4,7 @@ import { Toast, ToastBody, ToastHeader } from 'reactstrap';
 import { FaTrash, FaCar, FaPen, FaPrint } from 'react-icons/fa'
 import { Route, Link } from "react-router-dom";
 import Print from './print'
-import { PDFDownloadLink } from "@react-pdf/renderer";
+import jsPDF from 'jspdf';
 import { Button, UncontrolledPopover, PopoverHeader, PopoverBody } from 'reactstrap';
 import Update from './updateCustomer'
 
@@ -40,6 +40,14 @@ function Section() {
         setId(id)
     }
 
+
+    const handlePDF = (customer) => {
+        const info = customer
+        console.log("Handle pdf was clicked", info)
+        var doc = new jsPDF()
+        doc.text(`${info.first_name}`, 20, 20)
+        doc.save('pdf')
+    }
     // const handleNewPage = () => {
     //     console.log('this was clicked for new page!')
     //     return (
@@ -84,16 +92,9 @@ function Section() {
                                 </i>
                             </Button>
 
+                            <FaPrint size={20} onClick={() => handlePDF(customer)} />
 
 
-                            {/* <PDFDownloadLink
-                                document={<Print data={customers} />}
-                                fileName='repairorder.pdf'
-                                style={{
-                                    textDecoration: 'None'
-                                }}>
-                                <FaPrint />
-                            </PDFDownloadLink> */}
 
 
 
