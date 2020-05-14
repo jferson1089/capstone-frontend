@@ -3,9 +3,9 @@ import Calender from 'react-calendar'
 
 function Schedule() {
     return (
-        <aside>
+        <section>
             <Calender />
-        </aside>
+        </section>
     )
 }
 

@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import Section from './section'
 import Footer from './footer'
+import { Route } from 'react-router-dom'
+import Service from './service'
 
 
 function Main() {
@@ -11,8 +13,8 @@ function Main() {
         <main>
             <br />
 
-            <Section />
-
+            <Route exact path="/" component={Section} />
+            <Route exact path='/service' component={Service} />
 
 
 

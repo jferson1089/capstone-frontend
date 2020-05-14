@@ -4,12 +4,15 @@ import { Toast, ToastBody, ToastHeader } from 'reactstrap';
 import { FaTrash, FaCar, FaPen, FaPrint } from 'react-icons/fa'
 import { Route, Link } from "react-router-dom";
 import Print from './print'
-
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import { Button, UncontrolledPopover, PopoverHeader, PopoverBody } from 'reactstrap';
+import Update from './updateCustomer'
 
 function Section() {
 
     const [customers, setCustomers] = useState([])
-    const [deleted, setDeleted] = useState(false)
+    const [useId, setId] = useState('')
+
 
 
     useEffect(() => {
@@ -30,18 +33,22 @@ function Section() {
             alert("Customer Appointment Removed")
         }
 
-
     }
 
-    const handleNewPage = () => {
-        console.log('this was clicked for new page!')
-        return (
-            <>
-                <Link to="/print" target="_blank" component={Print}>
-                </Link>
-            </>
-        )
+    const handleId = (id) => {
+        console.log('update ', id)
+        setId(id)
     }
+
+    // const handleNewPage = () => {
+    //     console.log('this was clicked for new page!')
+    //     return (
+    //         <>
+    //             <Link to="/print" target="_blank" component={Print}>
+    //             </Link>
+    //         </>
+    //     )
+    // }
 
     const renderCustomers = customers.map((customer, index) => {
         return (
@@ -57,13 +64,40 @@ function Section() {
                         <p>Phone :{customer.phone_number}</p>
                         <p>Vin: {customer.vin_number}</p>
                         <p>{customer.reason}</p>
+
                         <div className="split">
-                            <FaPen />
 
-                            <FaPrint onClick={handleNewPage} />
+                            <Button id="Popover3" type="button">
+                                <FaPen size={20} onClick={() => handleId(customer.id)} />
+                                <i className="fas fa-play">
+                                    <UncontrolledPopover
+                                        trigger="legacy"
+                                        placement="top"
+                                        // isOpen={popoverOpen}
+                                        target="Popover3"
+                                    // toggle={toggle}
+                                    >
+                                        <PopoverBody>
+                                            <Update useId={useId} />
+                                        </PopoverBody>
+                                    </UncontrolledPopover>
+                                </i>
+                            </Button>
 
 
-                            <FaTrash onClick={() => handleDelete(customer.id)} />
+
+                            {/* <PDFDownloadLink
+                                document={<Print data={customers} />}
+                                fileName='repairorder.pdf'
+                                style={{
+                                    textDecoration: 'None'
+                                }}>
+                                <FaPrint />
+                            </PDFDownloadLink> */}
+
+
+
+                            <FaTrash size={20} onClick={() => handleDelete(customer.id)} />
                         </div>
                     </ToastBody>
                 </Toast>

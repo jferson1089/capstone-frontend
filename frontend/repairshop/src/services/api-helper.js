@@ -10,6 +10,7 @@ export const getAllCustomers = async () => {
 }
 
 export const createCustomer = async (customer) => {
+    console.log('api helper create customer', customer)
     const resp = await api.post('/api/customer/', customer)
     return resp.data
 }
@@ -19,7 +20,14 @@ export const deleteCustomer = async (id) => {
     return resp.data
 }
 
-export const updateCustomer = async (id, customer) => {
-    const resp = await api.put(`/api/customer/${id}`, customer)
+export const updateCustomer = async (id, newUpdate) => {
+    console.log('api helper', id)
+    console.log('api helper customer', newUpdate)
+    const resp = await api.put(`/api/customer/${id}`, newUpdate)
+    return resp.data
+}
+
+export const getAllServices = async () => {
+    const resp = await api.get('/api/service/')
     return resp.data
 }

@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import { Button, UncontrolledPopover, PopoverHeader, PopoverBody } from 'reactstrap';
 import Customer from './customer'
 import Calender from './calendar'
-import { FaCalendarPlus, FaCalendar } from 'react-icons/fa'
+import { FaCalendarPlus, FaCalendar, FaCarCrash } from 'react-icons/fa'
+import { Link } from 'react-router-dom'
+
 
 function Footer() {
 
@@ -48,8 +50,10 @@ function Footer() {
             </Button>
 
 
-            <p>Calender</p>
-            <p>Service</p>
+
+            <Link to='/service'>
+                <FaCarCrash size={32} />
+            </Link>
         </div>
     )
 }

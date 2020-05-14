@@ -78,3 +78,9 @@ aside{
   width:500px;
 
 }
+
+.serviceItem{
+  display:flex;
+  margin:20px;
+  
+}
