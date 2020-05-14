@@ -20,10 +20,10 @@ export const deleteCustomer = async (id) => {
     return resp.data
 }
 
-export const updateCustomer = async (id, newUpdate) => {
+export const updateCustomer = async (id, customer) => {
     console.log('api helper', id)
-    console.log('api helper customer', newUpdate)
-    const resp = await api.put(`/api/customer/${id}`, newUpdate)
+    // console.log('api helper customer', newUpdate)
+    const resp = await api.put(`/api/customer/${id}/`, customer)
     return resp.data
 }
 

@@ -41,7 +41,6 @@ function Update(props) {
     }
 
     const newUpdate = {
-
         first_name: firstname,
         last_name: lastname,
         phone_number: phonenumber,
@@ -49,13 +48,13 @@ function Update(props) {
         reason: description,
     }
 
-    const handleUpdate = e => {
+    const handleUpdate = async (e) => {
         e.preventDefault()
         const id = props.useId
         console.log('update id', id)
         console.log('returned json from click', newUpdate)
-        e.target.reset()
-        const json = updateCustomer(id, newUpdate)
+        // e.target.reset()
+        const json = await updateCustomer(id, newUpdate)
         console.log('resposne', json)
 
     }
